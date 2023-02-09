@@ -1,2 +1,18 @@
+<script>
+  let number = 0;
+
+
+</script>
+
 <h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<div>
+  {number}
+</div>
+
+<input bind:value={number} disabled />
+
+<button on:click={() => {
+  number = number + 1
+}} >
+  click 
+</button>
