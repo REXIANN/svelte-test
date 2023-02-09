@@ -14,8 +14,13 @@
 	}
 </script>
 
-<div class="flex justify-center items-center">
+<main class="flex justify-center items-center">
 	<div class="artboard phone-1 flex flex-col justify-center items-center gap-4">
+		<div class="mockup-code mb-10">
+			<pre data-prefix="$"><code>virtual DOM is slow.</code></pre>
+			<pre data-prefix="$"><code>use svelte instead.</code></pre>
+		</div>
+
 		<input
 			bind:value={number}
 			disabled
@@ -30,4 +35,4 @@
 			<button on:click={decrease} class="btn">- 1</button>
 		</div>
 	</div>
-</div>
+</main>
