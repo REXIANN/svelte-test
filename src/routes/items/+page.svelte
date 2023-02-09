@@ -2,21 +2,14 @@
 	import type { PageData } from './$types';
 	import type { Product } from '../../components/items/types';
 
+	import Card from '../../components/items/Card.svelte';
+
 	export let data: PageData;
 	const products: Product[] = data.products;
 </script>
 
-<h1>Items</h1>
-{#each products as { title, description, price, images }}
-	name: {title}
-	description: {description}
-	price: {price}
-
-	<div>
-		images: {images[0]}
-		<!-- {#each images as src}
-			<img alt="img of {title}" {src} />
-		{/each} -->
-	</div>
-	<br />
-{/each}
+<section class="flex flex-wrap gap-5 justify-center">
+	{#each products as { title, description, price, images }}
+		<Card {title} {description} {price} img={images[0]} />
+	{/each}
+</section>
