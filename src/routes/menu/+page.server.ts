@@ -1,10 +1,15 @@
-import type { PageServerLoad } from './$types';
 import { google } from "googleapis";
+
+/** @type {import('@sveltejs/adapter-vercel').Config} */
+export const config = {
+  envVarsInUse: ['VITE_CLIENT_EMAIL', 'VITE_PRIVATE_KEY', 'VITE_SHEET_ID']
+}
 
 const BASE_URL = 'https://www.googleapis.com/auth/spreadsheets'
 const CLIENT_EMAIL = import.meta.env.VITE_CLIENT_EMAIL
 const PRIVATE_KEY = import.meta.env.VITE_PRIVATE_KEY
 const SHEET_ID = import.meta.env.VITE_SHEET_ID
+
 
 export const load = async () => {
 
