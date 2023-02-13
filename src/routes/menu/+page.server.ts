@@ -1,0 +1,27 @@
+import type { PageServerLoad } from './$types';
+import { google } from "googleapis";
+
+const BASE_URL = 'https://www.googleapis.com/auth/spreadsheets'
+const CLIENT_EMAIL = import.meta.env.VITE_CLIENT_EMAIL
+const PRIVATE_KEY = import.meta.env.VITE_PRIVATE_KEY
+const SHEET_ID = import.meta.env.VITE_SHEET_ID
+
+export const load = async () => {
+
+    const authorize = new google.auth.JWT(CLIENT_EMAIL, undefined, PRIVATE_KEY, [BASE_URL])
+
+    const googleSheet = google.sheets({
+      version: 'v4',
+      auth: authorize,
+    })
+
+    const response = await googleSheet.spreadsheets.values.get({
+      spreadsheetId: SHEET_ID,
+      range: 'A1:G39'
+    })
+
+    console.log(response.data)
+
+
+  return response.data;
+}

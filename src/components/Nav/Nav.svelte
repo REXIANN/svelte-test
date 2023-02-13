@@ -19,6 +19,7 @@
 			<ul class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
 				<li><a href="/parent">Parent</a></li>
 				<li><a href="/items">Items</a></li>
+				<li><a href="/menu">Menu</a></li>
 			</ul>
 		</div>
 	</div>
