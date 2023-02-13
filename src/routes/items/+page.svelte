@@ -6,10 +6,15 @@
 
 	export let data: PageData;
 	const products: Product[] = data.products;
+
+	function hasImg(images?: string[]) {
+		return Array.isArray(images) && images.length > 0;
+	}
 </script>
 
 <section class="flex flex-wrap gap-5 justify-center">
 	{#each products as { title, description, price, images }}
-		<Card {title} {description} {price} img={images[0]} />
+		{@const img = hasImg(images) ? images[0] : '#'}
+		<Card {title} {description} {price} {img} />
 	{/each}
 </section>
