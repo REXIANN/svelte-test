@@ -24,11 +24,9 @@ export const load = async () => {
 			range: 'A1:G39'
 		});
 
-		const data = await response.data;
-
 		return response.data;
 	} catch (e) {
 		console.log('Error: ', e);
-		return { e };
+		return e;
 	}
 };
