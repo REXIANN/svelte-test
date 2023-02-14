@@ -1,6 +1,7 @@
 <script lang="ts">
 	export let data: { values: string[] };
 
+	console.log({ data });
 	const values = data.values;
 </script>
 
