@@ -1,4 +1,5 @@
 import { google } from 'googleapis';
+import type { PageServerLoad } from './$types';
 
 /** @type {import('@sveltejs/adapter-vercel').Config} */
 export const config = {
@@ -10,7 +11,7 @@ const CLIENT_EMAIL = import.meta.env.VITE_CLIENT_EMAIL;
 const PRIVATE_KEY = import.meta.env.VITE_PRIVATE_KEY;
 const SHEET_ID = import.meta.env.VITE_SHEET_ID;
 
-export const load = async () => {
+export const load = (async () => {
 	try {
 		const authorize = new google.auth.JWT(CLIENT_EMAIL, undefined, PRIVATE_KEY, [BASE_URL]);
 
@@ -29,4 +30,4 @@ export const load = async () => {
 		console.log('Error: ', e);
 		return e;
 	}
-};
+}) satisfies PageServerLoad;
