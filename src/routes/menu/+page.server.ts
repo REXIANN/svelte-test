@@ -33,5 +33,6 @@ export const load = async () => {
 		return response.data;
 	} catch (e) {
 		console.log('Error: ', e);
+		return e;
 	}
 };
