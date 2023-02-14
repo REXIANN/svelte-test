@@ -13,26 +13,22 @@ const SHEET_ID = import.meta.env.VITE_SHEET_ID;
 export const load = async () => {
 	try {
 		const authorize = new google.auth.JWT(CLIENT_EMAIL, undefined, PRIVATE_KEY, [BASE_URL]);
-		console.log({ authorize });
 
 		const googleSheet = google.sheets({
 			version: 'v4',
 			auth: authorize
 		});
-		console.log({ googleSheet });
 
-		console.log({ spreadsheetId: SHEET_ID });
 		const response = await googleSheet.spreadsheets.values.get({
 			spreadsheetId: SHEET_ID,
 			range: 'A1:G39'
 		});
-		console.log({ response });
 
-		console.log(response.data);
+		const data = await response.data;
 
 		return response.data;
 	} catch (e) {
 		console.log('Error: ', e);
-		return e;
+		return { e };
 	}
 };
